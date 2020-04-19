@@ -5,13 +5,43 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Test</title>
+    <title>Versammlung Neuwied – Countdown</title>
 
     <link rel="stylesheet" href="/app.css">
 </head>
 <body>
 
-    <h1>Versammlung Neuwied</h1>
+    <section class="absolute ml-32 mt-32 font-sans font-bold z-20">
+        <!-- Countdown -->
+        <div class="leading-none text-blueish-dark">
+            <span id="countdown" class="inline-block text-14xl font-semibold tracking-tight">
+                3
+            </span>
+            <span class="inline-block text-4xl font-black">
+                min
+            </span>
+        </div>
+        <!-- Uhrzeit -->
+        <div id="current-time" class="bg-blueish-light px-2 py-3 leading-none text-white text-3xl text-center">
+            12:54 Uhr
+        </div>
+    </section>
+
+    <footer class="fixed bottom-0 mb-16 ml-32 z-10">
+        <header class="text-blueish-dark tracking-wide leading-tight">
+            <div id="congregation" class="font-black text-4xl">Öffentliche Zusammenkunft</div>
+            <div class="text-3xl">Versammlung Neuwied</div>
+        </header>
+    </footer>
+
+    <!-- special light -->
+    <div class="absolute bg-white top-0 bottom-0 ml-64 distord"></div>
+    <div class="absolute bg-white top-0 bottom-0 right-0 -mr-48 distord"></div>
+
+    <!-- background image -->
+    <div class="fixed bottom-0 left-0 right-0 z-0 opacity-25 flex justify-end">
+        <img class="w-full lg:w-2/3" src="/images/erste-christen-versammlung.png" alt="Ersten Christen bei der Versammlung im 1. Jahrhundert">
+    </div>
 
     <!-- Scripts -->
     <script src="app.js"></script>

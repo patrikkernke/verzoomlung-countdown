@@ -3,3 +3,18 @@
 @tailwind components;
 
 @tailwind utilities;
+
+html, body {
+    @apply w-full h-full;
+}
+
+body {
+    background: linear-gradient(45deg, #D2D8E3, #BCC6D7);
+    @apply antialiased;
+}
+
+.distord {
+    transform: skewX(-22deg);
+    opacity: 8%;
+    width: 300px;
+}
