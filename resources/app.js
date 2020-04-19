@@ -29,8 +29,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    setInterval(() => {
+   var interval = setInterval(() => {
         // current time
+       now = new Date();
         currentTimeElement.textContent = now.getHours() + ':' + addZero(now.getMinutes()) + ' Uhr';
 
         // countdown
@@ -42,7 +43,9 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             countdownElement.textContent = 0;
         }
-    }, 250)
+
+        console.log(remainingMinutes);
+    }, 1000)
 });
 
 function addZero(i) {
