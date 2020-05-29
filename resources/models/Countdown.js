@@ -9,7 +9,7 @@ class Countdown {
      */
     constructor(meeting, referenceDate = null) {
         this.meeting = meeting;
-        this.referenceDate = (referenceDate !== null) ? moment(referenceDate) : moment();
+        this.referenceDate = referenceDate;
     }
 
     remainingTimeUntilStart() {
@@ -17,7 +17,7 @@ class Countdown {
             ? this._getNextCongressAppointment()
             : this.meeting.next();
 
-        const remainingMinutes = appointmentTime.diff(this.referenceDate, 'minutes');
+        const remainingMinutes = appointmentTime.diff(this._getRefDate(), 'minutes');
         return remainingMinutes > 0 ? remainingMinutes : 0;
     }
 
@@ -26,10 +26,15 @@ class Countdown {
     }
 
     _getNextCongressAppointment() {
-        return this.meeting.program.morning.isAfter(this.referenceDate)
+        return this.meeting.program.morning.isAfter(this._getRefDate())
             ? this.meeting.program.morning
             : this.meeting.program.afternoon;
     }
+
+    _getRefDate() {
+        return (this.referenceDate === null) ? moment() : moment(this.referenceDate);
+    }
+
 }
 
 export default Countdown;
