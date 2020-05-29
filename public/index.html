@@ -13,7 +13,7 @@
 
     <section class="absolute ml-32 mt-32 font-sans font-bold z-20">
         <!-- Countdown -->
-        <div class="leading-none text-blueish-dark">
+        <div id="countdown-wrapper" class="leading-none">
             <span id="countdown" class="inline-block text-14xl font-semibold tracking-tight">
                 ?
             </span>
@@ -22,15 +22,15 @@
             </span>
         </div>
         <!-- Uhrzeit -->
-        <div id="current-time" class="bg-blueish-light px-2 py-3 leading-none text-white text-3xl text-center">
+        <div id="current-time" class="px-2 py-3 leading-none text-3xl text-center">
             Uhrzeit
         </div>
     </section>
 
     <footer class="fixed bottom-0 mb-16 ml-32 z-10">
-        <header class="text-blueish-dark tracking-wide leading-tight">
+        <header id="footer-header" class="tracking-wide leading-tight">
             <div id="congregation" class="font-black text-4xl">Öffentliche Zusammenkunft</div>
-            <div class="text-3xl">Versammlung Neuwied</div>
+            <div id="congregationSource" class="text-3xl">Versammlung Neuwied</div>
         </header>
     </footer>
 
@@ -40,7 +40,7 @@
 
     <!-- background image -->
     <div class="fixed bottom-0 left-0 right-0 z-0 opacity-25 flex justify-end">
-        <img class="w-full lg:w-2/3" src="/images/erste-christen-versammlung.png" alt="Ersten Christen bei der Versammlung im 1. Jahrhundert">
+        <img id="background-image" class="w-full lg:w-2/3" src="/images/erste-christen-versammlung.png" alt="Ersten Christen bei der Versammlung im 1. Jahrhundert">
     </div>
 
     <!-- Scripts -->
