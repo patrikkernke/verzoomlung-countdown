@@ -61,8 +61,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let interval = setInterval(() => {
         currentTimeElement.textContent = moment().format('HH:mm [Uhr]');
+        const remainingMinutes = countdown.remainingTimeUntilStart().toString()
 
-        countdownElement.textContent = countdown.remainingTimeUntilStart().toString();
+        let displayRemainingMinutes = `${remainingMinutes.toString()}<span class="text-4xl font-black tracking-normal">min</span>`;
+
+        if (remainingMinutes > 60) {
+            const hours = Math.floor(remainingMinutes/60);
+            const minutes = remainingMinutes % 60;
+            displayRemainingMinutes = `${hours}<span class="text-4xl font-black tracking-normal">h ${minutes}min</span>`;
+        }
+
+        countdownElement.innerHTML = displayRemainingMinutes;
     }, 1000);
 
 });
