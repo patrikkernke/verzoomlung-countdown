@@ -2,17 +2,11 @@ import moment from 'moment';
 import Meeting from "./models/Meeting";
 import Countdown from "./models/Countdown";
 import Congress from "./models/Congress";
+import RegularMeeting from "./models/RegularMeeting";
 
-const ludzMeeting = new Meeting({
-    name: 'Leben- und Dienstzusammenkunft',
-    day: 'Freitag',
-    time: '19:00'
-});
-const publicMeeting = new Meeting({
-    name: 'Öffentliche Zusammenkunft',
-    day: 'Sonntag',
-    time: '13:00'
-})
+const ludzMeeting = new RegularMeeting('Freitag', '19:00', '21:45')
+const publicMeeting = new RegularMeeting('Sonntag', '13:00', '14:45')
+
 const congressDays = [
   new Congress({date: '2020-05-30', topic: 'Liebe Jehova mit deinem ganzen Herzen'}),
   new Congress({date: '2020-06-06', topic: 'Liebe Jehova mit deinem ganzen Herzen'}),
@@ -22,6 +16,8 @@ const congressDays = [
 let nextMeeting = (ludzMeeting.next().isBefore(publicMeeting.next()))
     ? ludzMeeting
     : publicMeeting;
+
+// WEITERES MUSS ANGEPASST WERDEN
 
 congressDays.forEach((congress) => {
     const today = moment();
