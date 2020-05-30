@@ -1,7 +1,7 @@
 import moment from "moment";
 import Happening from "./Happening";
 
-class RegularHappening {
+class RepeatingHappening {
 
     constructor(name, weekday, startTime, endTime, basedate) {
         this._name = name;
@@ -44,4 +44,4 @@ class RegularHappening {
     }
 }
 
-export default RegularHappening;
+export default RepeatingHappening;
