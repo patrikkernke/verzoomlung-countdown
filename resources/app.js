@@ -10,7 +10,7 @@ const publicMeeting = new RepeatingHappening(
     'Öffentlicher Vortrag', 'Sonntag', '13:00', '13:35'
 )
 const wtStudy = new RepeatingHappening(
-    'Wachtturm Studium', 'Sonntag', '13:35', '14:45'
+    'Wachtturmstudium', 'Sonntag', '13:35', '14:45'
 )
 
 const manager = new HappeningManager();
@@ -32,28 +32,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const dayHappenings = manager.getHappeningsForDay(moment());
 
     // Falls der Tag Events hat soll eine Liste dieser angezeigt werden
-    if (dayHappenings.length > 0 ) {
-        dayHappenings.forEach((happening) => {
-            programElement.innerHTML += `
-                <div class="flex items-center text-2xl text-blueish-dark mb-4">
-                    <div class="py-2 leading-none h-full font-bold text-lg bg-gray-300 rounded-lg mr-4 text-gray-700 w-20 text-center">
-                        ${happening.start.format('HH:mm')}
-                    </div>
-                    <div class="leading-tight">
-                        ${happening.name}
-                    </div>
-                </div>
-            `;
-        });
-    }
+    refreshProgram(dayHappenings, programElement, moment());
 
-    // wenn ein Event stattfindet soll das eingezeigt werden
-    // wenn keine Events mehr anstehen an diesem Tag, soll eine Liste der kommenden Tage angezeigt werden
-    // falls der Tag kein Programm hat, sollte eine Liste der nächsten Events angezeigt werden
 
+    // Interval
     let clockTime = moment();
     clockElement.textContent = clockTime.format('HH:mm [Uhr]');
-
     let interval = setInterval(() => {
 
         // Uhrzeit aktualisieren falls nötig
@@ -63,9 +47,10 @@ document.addEventListener("DOMContentLoaded", () => {
             clockElement.textContent = now.format('HH:mm [Uhr]');
         }
 
-        // falls ein event gerade stattfindet darf der Code nicht ausgeführt werden
+        // falls ein Event gerade stattfindet darf der Code nicht ausgeführt werden
         let showCountdown = false;
         dayHappenings.forEach((happening) => {
+            // countdown
             const diffInSeconds = happening.start.diff(now, 'second');
 
             if (diffInSeconds < (60*60) && diffInSeconds >= 0) {
@@ -82,6 +67,44 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (!showCountdown) { countdownElement.innerHTML = ''; }
 
+        refreshProgram(dayHappenings, programElement, now)
     }, 1000);
 
 });
+
+function refreshProgram(happenings, element, now) {
+    if (happenings.length <= 0 ) {
+        return;
+    }
+
+    let html = '';
+    happenings.forEach((happening) => {
+        if (now.isBetween(happening.start, happening.end)) {
+            html += `
+                <div class="flex items-center text-2xl text-red-800 mb-4">
+                    <div class="py-2 leading-none h-full font-bold text-lg bg-red-300 rounded-lg mr-4 text-red-700 w-20 text-center">
+                        ${happening.start.format('HH:mm')}
+                    </div>
+                    <div class="leading-tight">
+                        ${happening.name}
+                    </div>
+                </div>
+            `;
+        } else {
+            html += `
+                <div class="flex items-center text-2xl text-blueish-dark mb-4">
+                    <div class="py-2 leading-none h-full font-bold text-lg bg-gray-300 rounded-lg mr-4 text-gray-700 w-20 text-center">
+                        ${happening.start.format('HH:mm')}
+                    </div>
+                    <div class="leading-tight">
+                        ${happening.name}
+                    </div>
+                </div>
+            `;
+        }
+    });
+
+    if (element.innerHTML !== html) {
+        element.innerHTML = html;
+    }
+}
