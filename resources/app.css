@@ -34,12 +34,13 @@ html, body {
 body { background: linear-gradient(45deg, #D2D8E3, #BCC6D7); }
 #countdown { @apply text-blueish-dark; }
 #clock { @apply bg-blueish-light text-white; }
-#footer-header { @apply text-blueish-dark; }
+footer { @apply text-blueish-dark; }
 
+/* congress theme */
 .congress { background: linear-gradient(45deg, theme('colors.yellow.100'), theme('colors.yellow.400')); }
 .congress #countdown-wrapper { @apply text-yellow-900; }
 .congress #current-time { @apply bg-yellow-500 text-yellow-900; }
-.congress #footer-header { @apply text-yellow-900; }
+.congress footer { @apply text-yellow-900; }
 
 .distord {
     transform: skewX(-22deg);

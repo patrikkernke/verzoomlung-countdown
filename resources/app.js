@@ -20,7 +20,6 @@ manager.addRegularHappening(wtStudy, moment().subtract(1, 'day'), moment().add(2
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    const bodyElement = document.getElementsByTagName("BODY")[0];
     const countdownElement = document.getElementById('countdown');
     const clockElement = document.getElementById('clock');
     const programElement = document.getElementById('program');
