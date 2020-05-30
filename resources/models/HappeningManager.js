@@ -20,9 +20,7 @@ class HappeningManager {
             });
         }
 
-        return result.sort((a, b) => {
-            return a.start.diff(b.start);
-        });
+        return this._sort(result);
     }
 
     addRegularHappening(regularHappening, startingFrom, endingAt) {
@@ -34,6 +32,22 @@ class HappeningManager {
 
             regularHappening.basedate = nextHappening.end.clone().add(1, 'second');
         }
+
+        return this;
+    }
+
+    getHappeningsForDay(day) {
+        const result = this._happenings.filter((happening) => {
+            return day.isSame(happening.start, 'day');
+        });
+
+        return this._sort(result);
+    }
+
+    _sort(result) {
+        return result.sort((a, b) => {
+            return a.start.diff(b.start);
+        })
     }
 }
 
