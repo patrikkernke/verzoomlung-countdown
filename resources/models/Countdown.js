@@ -17,7 +17,7 @@ class Countdown {
             ? this._getNextCongressAppointment()
             : this.meeting.next();
 
-        const remainingMinutes = appointmentTime.diff(this._getRefDate(), 'minutes');
+        const remainingMinutes = appointmentTime.diff(moment(), 'minutes');
         return remainingMinutes > 0 ? remainingMinutes : 0;
     }
 
@@ -26,7 +26,7 @@ class Countdown {
     }
 
     _getNextCongressAppointment() {
-        return this.meeting.program.morning.isAfter(this._getRefDate())
+        return this.meeting.program.morning.isAfter(moment())
             ? this.meeting.program.morning
             : this.meeting.program.afternoon;
     }
