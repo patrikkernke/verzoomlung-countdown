@@ -21,6 +21,10 @@ html, body {
     @apply transition-all duration-500 ease-in-out;
 }
 
+#date {
+    @apply text-xl text-blueish-dark opacity-75 font-bold mt-2;
+}
+
 #program {
     @apply mt-12;
     @apply font-sans;

@@ -24,20 +24,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const countdownElement = document.getElementById('countdown');
     const clockElement = document.getElementById('clock');
     const programElement = document.getElementById('program');
-
-    const congregationTypeElement = document.getElementById('congregation');
-    const congregationSourceElement = document.getElementById('congregationSource');
-    const backgroundImage = document.getElementById('background-image');
+    const dateElement = document.getElementById('date');
 
     const dayHappenings = manager.getHappeningsForDay(moment());
 
     // Falls der Tag Events hat soll eine Liste dieser angezeigt werden
     refreshProgram(dayHappenings, programElement, moment());
 
-
     // Interval
     let clockTime = moment();
     clockElement.textContent = clockTime.format('HH:mm [Uhr]');
+    dateElement.textContent = clockTime.locale('de').format('dddd, Mo MMM YYYY')
+
     let interval = setInterval(() => {
 
         // Uhrzeit aktualisieren falls nötig
