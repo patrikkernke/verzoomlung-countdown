@@ -9,10 +9,27 @@ html, body {
     @apply antialiased;
 }
 
+#countdown {
+    @apply font-sans font-semibold text-14xl;
+    @apply leading-none tracking-tight;
+}
+
+#clock {
+    @apply px-2 py-3 ;
+    @apply font-sans font-bold text-3xl text-center;
+    @apply leading-none text-3xl text-center;
+    @apply transition-all duration-500 ease-in-out;
+}
+
+#program {
+    @apply mt-12;
+    @apply font-sans;
+}
+
 /* default theme */
 body { background: linear-gradient(45deg, #D2D8E3, #BCC6D7); }
-#countdown-wrapper { @apply text-blueish-dark; }
-#current-time { @apply bg-blueish-light text-white; }
+#countdown { @apply text-blueish-dark; }
+#clock { @apply bg-blueish-light text-white; }
 #footer-header { @apply text-blueish-dark; }
 
 .congress { background: linear-gradient(45deg, theme('colors.yellow.100'), theme('colors.yellow.400')); }
