@@ -10,6 +10,14 @@ class Happening {
         this.end.second(0).millisecond(0);
     }
 
+    isRunningAt(timepoint) {
+        if (! moment.isMoment(timepoint)) {
+            timepoint = moment(timepoint);
+        }
+
+        return timepoint.isBetween(this.start, this.end);
+    }
+
 }
 
 export default Happening;

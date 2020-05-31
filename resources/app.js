@@ -46,7 +46,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // falls ein Event gerade stattfindet darf der Code nicht ausgeführt werden
         let showCountdown = false;
+        let isAHappeningRunning = false;
+
         dayHappenings.forEach((happening) => {
+            if (happening.isRunningAt(now)) isAHappeningRunning = true;
+
             // countdown
             const diffInSeconds = happening.start.diff(now, 'second');
 
@@ -54,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const diffInMinutes = happening.start.diff(now, 'minute');
                 const countdownHtml = `<span class="font-bold text-4xl tracking-normal">noch</span>${diffInMinutes +1}<span class="font-bold text-4xl tracking-normal">min</span>`;
 
-                if (countdownElement.innerHTML !== countdownHtml && !showCountdown) {
+                if (countdownElement.innerHTML !== countdownHtml && !showCountdown && !isAHappeningRunning) { // wenn noch kein Countdown vorhanden ist und auch kein Event gerade stattfindet
                     countdownElement.innerHTML = countdownHtml;
                 }
 
@@ -62,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
 
-        if (!showCountdown) { countdownElement.innerHTML = ''; }
+        if (!showCountdown || isAHappeningRunning) { countdownElement.innerHTML = ''; }
 
         refreshProgram(dayHappenings, programElement, now)
     }, 1000);
@@ -76,7 +80,7 @@ function refreshProgram(happenings, element, now) {
 
     let html = '';
     happenings.forEach((happening) => {
-        if (now.isBetween(happening.start, happening.end)) {
+        if (happening.isRunningAt(now)) {
             html += `
                 <div class="flex items-center text-2xl text-red-800 mb-4">
                     <div class="py-2 leading-none h-full font-bold text-lg bg-red-300 rounded-lg mr-4 text-red-700 w-20 text-center">

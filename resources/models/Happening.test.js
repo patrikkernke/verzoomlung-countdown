@@ -19,3 +19,13 @@ it('should accept start and end data as string', () => {
     expect(happening.start).toEqual(moment(start));
     expect(happening.end).toEqual(moment(end));
 });
+
+it('should check if the happening is running at a given time', () => {
+    const start = '2020-01-12 12:00';
+    const end = '2020-01-12 13:00';
+
+    const happening = new Happening('Test', start, end);
+
+    expect(happening.isRunningAt('2020-01-12 12:30')).toBeTruthy();
+    expect(happening.isRunningAt('2020-01-12 15:00')).toBeFalsy();
+});
