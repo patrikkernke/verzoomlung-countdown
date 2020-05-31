@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Interval
     let clockTime = moment();
     clockElement.textContent = clockTime.format('HH:mm [Uhr]');
-    dateElement.textContent = clockTime.locale('de').format('dddd, Mo MMM YYYY')
+    dateElement.textContent = clockTime.locale('de').format('dddd, Do MMM YYYY')
 
     let interval = setInterval(() => {
 
