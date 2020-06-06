@@ -3,9 +3,12 @@ import RepeatingHappening from "./models/RepeatingHappening";
 import HappeningManager from "./models/HappeningManager";
 import Happening from "./models/Happening";
 
+moment.locale('de');
+
 const ludzMeeting = new RepeatingHappening(
     'Leben- und Dienstzusammenkunft', 'Freitag', '19:00', '21:45'
 );
+
 const publicMeeting = new RepeatingHappening(
     'Öffentlicher Vortrag', 'Sonntag', '13:00', '13:35'
 )
@@ -17,6 +20,9 @@ const manager = new HappeningManager();
 manager.addRegularHappening(ludzMeeting, moment().subtract(1, 'day'), moment().add(21, 'day'));
 manager.addRegularHappening(publicMeeting, moment().subtract(1, 'day'), moment().add(21, 'day'));
 manager.addRegularHappening(wtStudy, moment().subtract(1, 'day'), moment().add(21, 'day'));
+
+manager.addHappening(new Happening('Kongress Vormittagsprogramm', moment('2020-06-06 09:40'), moment('2020-06-06 12:05')));
+manager.addHappening(new Happening('Kongress Nachmittagsprogramm', moment('2020-06-06 13:20'), moment('2020-06-06 15:55')));
 
 document.addEventListener("DOMContentLoaded", () => {
 
