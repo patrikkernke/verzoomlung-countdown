@@ -23,6 +23,8 @@ manager.addRegularHappening(wtStudy, moment().subtract(1, 'day'), moment().add(2
 
 manager.addHappening(new Happening('Kongress Vormittagsprogramm', moment('2020-06-06 09:40'), moment('2020-06-06 12:05')));
 manager.addHappening(new Happening('Kongress Nachmittagsprogramm', moment('2020-06-06 13:20'), moment('2020-06-06 15:55')));
+manager.addHappening(new Happening('Kongress Vormittagsprogramm', moment('2020-06-13 09:40'), moment('2020-06-06 12:05')));
+manager.addHappening(new Happening('Kongress Nachmittagsprogramm', moment('2020-06-13 13:20'), moment('2020-06-06 15:55')));
 
 document.addEventListener("DOMContentLoaded", () => {
 
