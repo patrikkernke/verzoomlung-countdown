@@ -21,7 +21,7 @@ manager.addRegularHappening(ludzMeeting, moment().subtract(1, 'day'), moment().a
 manager.addRegularHappening(publicMeeting, moment().subtract(1, 'day'), moment().add(21, 'day'));
 manager.addRegularHappening(wtStudy, moment().subtract(1, 'day'), moment().add(21, 'day'));
 
-manager.addHappening(new Happening('Taufansprache', moment('2020-06-19 09:30'), moment('2020-06-19 10:15')));
+manager.addHappening(new Happening('Taufansprache', moment('2020-06-20 09:30'), moment('2020-06-20 10:15')));
 
 document.addEventListener("DOMContentLoaded", () => {
 
