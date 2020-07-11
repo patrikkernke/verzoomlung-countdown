@@ -23,7 +23,9 @@ manager.addRegularHappening(ludzMeeting, moment().subtract(1, 'day'), moment().a
 
 manager.addHappening(new Happening('Taufansprache', moment('2020-06-20 09:30'), moment('2020-06-20 10:15')));
 manager.addHappening(new Happening('Wachtturmstudium', moment('2020-07-12 10:00'), moment('2020-07-12 10:35')));
-manager.addHappening(new Happening('Regionaler Kongress (Freitag Vormittag)', moment('2020-07-12 10:40'), moment('2020-07-11 14:20')));
+manager.addHappening(new Happening('Regionaler Kongress (Freitag Vormittag)', moment('2020-07-12 10:40'), moment('2020-07-12 14:20')));
+manager.addHappening(new Happening('Wachtturmstudium', moment('2020-07-19 10:00'), moment('2020-07-19 10:35')));
+manager.addHappening(new Happening('Regionaler Kongress (Freitag Vormittag)', moment('2020-07-19 10:40'), moment('2020-07-19 14:20')));
 
 document.addEventListener("DOMContentLoaded", () => {
 
