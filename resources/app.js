@@ -57,6 +57,9 @@ RegionalCongressTheme.addDate('2020-08-23');
 RegionalCongressTheme.addDate('2020-08-30');
 
 document.addEventListener("DOMContentLoaded", () => {
+    window.Verzoomlung = {};
+    Verzoomlung.Manager = manager;
+    Verzoomlung.dayHappenings = manager.getHappeningsForDay(moment());
 
     const countdownElement = document.getElementById('countdown');
     const clockElement = document.getElementById('clock');
@@ -68,10 +71,8 @@ document.addEventListener("DOMContentLoaded", () => {
         RegionalCongressTheme.showCongressStyle();
     }
 
-    const dayHappenings = manager.getHappeningsForDay(moment());
-
     // Falls der Tag Events hat soll eine Liste dieser angezeigt werden
-    refreshProgram(dayHappenings, programElement, moment());
+    refreshProgram(Verzoomlung.dayHappenings, programElement, moment());
 
     // Interval
     let clockTime = moment();
@@ -91,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let showCountdown = false;
         let isAHappeningRunning = false;
 
-        dayHappenings.forEach((happening) => {
+        Verzoomlung.dayHappenings.forEach((happening) => {
             if (happening.isRunningAt(now)) isAHappeningRunning = true;
 
             // countdown
@@ -111,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (!showCountdown || isAHappeningRunning) { countdownElement.innerHTML = ''; }
 
-        refreshProgram(dayHappenings, programElement, now)
+        refreshProgram(Verzoomlung.dayHappenings, programElement, now)
     }, 1000);
 
 });
