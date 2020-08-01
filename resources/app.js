@@ -60,6 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.Verzoomlung = {};
     Verzoomlung.Manager = manager;
     Verzoomlung.dayHappenings = manager.getHappeningsForDay(moment());
+    Verzoomlung.Themes = [ RegionalCongressTheme ];
 
     const countdownElement = document.getElementById('countdown');
     const clockElement = document.getElementById('clock');
