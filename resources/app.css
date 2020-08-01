@@ -27,6 +27,12 @@ html, body {
 .program-entry { @apply flex items-center mb-4 text-2xl; }
 .program-entry .start-time { @apply py-2 leading-none h-full font-bold text-lg rounded-lg mr-4 w-20 text-center; }
 .program-entry .description { @apply leading-tight; }
+/* current program entry style */
+.program-entry.is-current { color: theme('colors.red.800') !important; }
+.program-entry.is-current .start-time {
+    color: theme('colors.red.800') !important;
+    background-color: theme('colors.red.200') !important
+}
 
 #background-image {
     @apply fixed bottom-0 left-0 right-0 z-0 opacity-25;
@@ -42,7 +48,6 @@ body { background: linear-gradient(45deg, #D2D8E3, #BCC6D7); }
 .program-entry { @apply text-blueish-dark; }
 .program-entry .start-time { @apply bg-gray-300 text-gray-700; }
 footer { @apply text-blueish-dark; }
-footer header { @apply hidden; }
 
 /* congress theme - freut euch immer */
 .regional-congress { background: white; }

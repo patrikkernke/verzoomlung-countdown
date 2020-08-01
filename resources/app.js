@@ -2,6 +2,7 @@ import moment from 'moment';
 import RepeatingHappening from "./models/RepeatingHappening";
 import HappeningManager from "./models/HappeningManager";
 import Happening from "./models/Happening";
+import Theme from "./models/Theme";
 
 moment.locale('de');
 
@@ -21,13 +22,39 @@ manager.addRegularHappening(ludzMeeting, moment().subtract(1, 'day'), moment().a
 // manager.addRegularHappening(publicMeeting, moment().subtract(1, 'day'), moment().add(21, 'day'));
 // manager.addRegularHappening(wtStudy, moment().subtract(1, 'day'), moment().add(21, 'day'));
 
+// Taufansprache
 manager.addHappening(new Happening('Taufansprache', moment('2020-06-20 09:30'), moment('2020-06-20 10:15')));
+
+// Regionaler Kongress – Freut euch immer
 manager.addHappening(new Happening('Wachtturmstudium', moment('2020-07-12 10:00'), moment('2020-07-12 10:35')));
 manager.addHappening(new Happening('Regionaler Kongress (Freitag Vormittag)', moment('2020-07-12 10:40'), moment('2020-07-12 14:20')));
+
 manager.addHappening(new Happening('Wachtturmstudium', moment('2020-07-19 10:00'), moment('2020-07-19 10:35')));
 manager.addHappening(new Happening('Regionaler Kongress (Freitag Nachmittag)', moment('2020-07-19 10:40'), moment('2020-07-19 14:20')));
+
 manager.addHappening(new Happening('Wachtturmstudium', moment('2020-08-02 10:00'), moment('2020-08-02 10:30')));
 manager.addHappening(new Happening('Regionaler Kongress (Samstag Vormittag)', moment('2020-08-02 10:45'), moment('2020-08-02 15:00')));
+
+manager.addHappening(new Happening('Wachtturmstudium', moment('2020-08-09 10:00'), moment('2020-08-09 10:30')));
+manager.addHappening(new Happening('Regionaler Kongress (Samstag Nachmittag)', moment('2020-08-09 10:45'), moment('2020-08-09 15:00')));
+
+manager.addHappening(new Happening('Wachtturmstudium', moment('2020-08-23 10:00'), moment('2020-08-23 10:30')));
+manager.addHappening(new Happening('Regionaler Kongress (Sonntag Vormittag)', moment('2020-08-23 10:45'), moment('2020-08-23 15:00')));
+
+manager.addHappening(new Happening('Wachtturmstudium', moment('2020-08-30 10:00'), moment('2020-08-30 10:30')));
+manager.addHappening(new Happening('Regionaler Kongress (Sonntag Nachmittag)', moment('2020-08-30 10:45'), moment('2020-08-30 15:00')));
+
+const RegionalCongressTheme = new Theme(
+    'Regionaler Kongress',
+    '„Freut euch immer“',
+    'regional-congress',
+    '/images/kongress_freut-euch-immer.png'
+);
+
+RegionalCongressTheme.addDate('2020-08-02');
+RegionalCongressTheme.addDate('2020-08-09');
+RegionalCongressTheme.addDate('2020-08-23');
+RegionalCongressTheme.addDate('2020-08-30');
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -35,6 +62,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const clockElement = document.getElementById('clock');
     const programElement = document.getElementById('program');
     const dateElement = document.getElementById('date');
+
+    //  Vorbereitungen für Themes
+    if (RegionalCongressTheme.shouldActivate()) {
+        RegionalCongressTheme.showCongressStyle();
+    }
 
     const dayHappenings = manager.getHappeningsForDay(moment());
 
@@ -91,29 +123,14 @@ function refreshProgram(happenings, element, now) {
 
     let html = '';
     happenings.forEach((happening) => {
-        if (happening.isRunningAt(now)) {
-            html += `
-                <div class="flex items-center text-2xl text-red-800 mb-4">
-                    <div class="py-2 leading-none h-full font-bold text-lg bg-red-300 rounded-lg mr-4 text-red-700 w-20 text-center">
-                        ${happening.start.format('HH:mm')}
-                    </div>
-                    <div class="leading-tight">
-                        ${happening.name}
-                    </div>
-                </div>
-            `;
-        } else {
-            html += `
-                <div class="program-entry">
-                    <div class="start-time ">
-                        ${happening.start.format('HH:mm')}
-                    </div>
-                    <div class="description">
-                        ${happening.name}
-                    </div>
-                </div>
-            `;
-        }
+        let cssModifier = happening.isRunningAt(now) ? 'is-current' : '';
+
+        html += `
+            <div class="program-entry ${cssModifier}">
+                <div class="start-time">${happening.start.format('HH:mm')}</div>
+                <div class="description">${happening.name}</div>
+            </div>
+        `;
     });
 
     if (element.innerHTML !== html) {
