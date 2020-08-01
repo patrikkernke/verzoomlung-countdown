@@ -18,14 +18,16 @@ const wtStudy = new RepeatingHappening(
 
 const manager = new HappeningManager();
 manager.addRegularHappening(ludzMeeting, moment().subtract(1, 'day'), moment().add(21, 'day'));
-manager.addRegularHappening(publicMeeting, moment().subtract(1, 'day'), moment().add(21, 'day'));
-manager.addRegularHappening(wtStudy, moment().subtract(1, 'day'), moment().add(21, 'day'));
+// manager.addRegularHappening(publicMeeting, moment().subtract(1, 'day'), moment().add(21, 'day'));
+// manager.addRegularHappening(wtStudy, moment().subtract(1, 'day'), moment().add(21, 'day'));
 
 manager.addHappening(new Happening('Taufansprache', moment('2020-06-20 09:30'), moment('2020-06-20 10:15')));
 manager.addHappening(new Happening('Wachtturmstudium', moment('2020-07-12 10:00'), moment('2020-07-12 10:35')));
 manager.addHappening(new Happening('Regionaler Kongress (Freitag Vormittag)', moment('2020-07-12 10:40'), moment('2020-07-12 14:20')));
 manager.addHappening(new Happening('Wachtturmstudium', moment('2020-07-19 10:00'), moment('2020-07-19 10:35')));
 manager.addHappening(new Happening('Regionaler Kongress (Freitag Nachmittag)', moment('2020-07-19 10:40'), moment('2020-07-19 14:20')));
+manager.addHappening(new Happening('Wachtturmstudium', moment('2020-08-02 10:00'), moment('2020-08-02 10:30')));
+manager.addHappening(new Happening('Regionaler Kongress (Samstag Vormittag)', moment('2020-08-02 10:45'), moment('2020-08-02 15:00')));
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -102,11 +104,11 @@ function refreshProgram(happenings, element, now) {
             `;
         } else {
             html += `
-                <div class="flex items-center text-2xl text-blueish-dark mb-4">
-                    <div class="py-2 leading-none h-full font-bold text-lg bg-gray-300 rounded-lg mr-4 text-gray-700 w-20 text-center">
+                <div class="program-entry">
+                    <div class="start-time ">
                         ${happening.start.format('HH:mm')}
                     </div>
-                    <div class="leading-tight">
+                    <div class="description">
                         ${happening.name}
                     </div>
                 </div>

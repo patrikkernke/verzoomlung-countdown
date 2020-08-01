@@ -21,26 +21,44 @@ html, body {
     @apply transition-all duration-500 ease-in-out;
 }
 
-#date {
-    @apply text-xl text-blueish-dark opacity-75 font-bold mt-2;
+#date { @apply text-xl text-blueish-dark opacity-75 font-bold mt-2; }
+
+#program { @apply mt-12; @apply font-sans; }
+.program-entry { @apply flex items-center mb-4 text-2xl; }
+.program-entry .start-time { @apply py-2 leading-none h-full font-bold text-lg rounded-lg mr-4 w-20 text-center; }
+.program-entry .description { @apply leading-tight; }
+
+#background-image {
+    @apply fixed bottom-0 left-0 right-0 z-0 opacity-25;
+    @apply flex justify-end;
 }
 
-#program {
-    @apply mt-12;
-    @apply font-sans;
-}
+#background-image img { @apply w-2/3; }
 
 /* default theme */
 body { background: linear-gradient(45deg, #D2D8E3, #BCC6D7); }
 #countdown { @apply text-blueish-dark; }
 #clock { @apply bg-blueish-light text-white; }
+.program-entry { @apply text-blueish-dark; }
+.program-entry .start-time { @apply bg-gray-300 text-gray-700; }
 footer { @apply text-blueish-dark; }
+footer header { @apply hidden; }
 
-/* congress theme */
-.congress { background: linear-gradient(45deg, theme('colors.yellow.100'), theme('colors.yellow.400')); }
-.congress #countdown-wrapper { @apply text-yellow-900; }
-.congress #current-time { @apply bg-yellow-500 text-yellow-900; }
-.congress footer { @apply text-yellow-900; }
+/* congress theme - freut euch immer */
+.regional-congress { background: white; }
+.regional-congress #countdown { color: #34645d; }
+.regional-congress #clock { background-color: #34645d; }
+.regional-congress #date { color: #34645d; }
+.regional-congress .program-entry { color: #34645d; }
+.regional-congress .program-entry .start-time { background-color: #c9d9d6; color: #34645d; }
+.regional-congress footer { color: #34645d; }
+.regional-congress #background-image { @apply left-auto top-0 block w-3/5 overflow-hidden opacity-100; }
+.regional-congress #background-image img { @apply object-cover object-left w-auto; }
+.regional-congress footer header {
+    @apply block;
+    @apply text-6xl -ml-8 mb-16 tracking-wide leading-tight;
+    color: #4ab2cd
+}
 
 .distord {
     transform: skewX(-22deg);
