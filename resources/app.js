@@ -48,7 +48,7 @@ const RegionalCongressTheme = new Theme(
     'Regionaler Kongress',
     '„Freut euch immer“',
     'regional-congress',
-    '/images/kongress_freut-euch-immer.png'
+    '/images/kongress_freut-euch-immer.jpg'
 );
 
 RegionalCongressTheme.addDate('2020-08-02');
