@@ -58,7 +58,7 @@ RegionalCongressTheme.addDate('2020-08-30');
 
 document.addEventListener("DOMContentLoaded", () => {
     window.Verzoomlung = {};
-    Verzoomlung.HappeningsManager = manager;
+    Verzoomlung.HappeningManager = manager;
     Verzoomlung.TodayHappenings = manager.getHappeningsForDay(moment());
     Verzoomlung.Themes = [ RegionalCongressTheme ];
 
