@@ -33,7 +33,7 @@ manager.addHappening(new Happening('Wachtturmstudium', moment('2020-07-19 10:00'
 manager.addHappening(new Happening('Regionaler Kongress (Freitag Nachmittag)', moment('2020-07-19 10:40'), moment('2020-07-19 14:20')));
 
 manager.addHappening(new Happening('Wachtturmstudium', moment('2020-08-02 10:00'), moment('2020-08-02 10:30')));
-manager.addHappening(new Happening('Regionaler Kongress (Samstag Vormittag)', moment('2020-08-02 10:55'), moment('2020-08-02 15:00')));
+manager.addHappening(new Happening('Regionaler Kongress (Samstag Vormittag)', moment('2020-08-02 10:50'), moment('2020-08-02 15:00')));
 
 manager.addHappening(new Happening('Wachtturmstudium', moment('2020-08-09 10:00'), moment('2020-08-09 10:30')));
 manager.addHappening(new Happening('Regionaler Kongress (Samstag Nachmittag)', moment('2020-08-09 10:50'), moment('2020-08-09 15:00')));
