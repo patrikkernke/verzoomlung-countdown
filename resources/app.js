@@ -19,8 +19,8 @@ const wtStudy = new RepeatingHappening(
 
 const manager = new HappeningManager();
 manager.addRegularHappening(ludzMeeting, moment().subtract(1, 'day'), moment().add(21, 'day'));
-// manager.addRegularHappening(publicMeeting, moment().subtract(1, 'day'), moment().add(21, 'day'));
-// manager.addRegularHappening(wtStudy, moment().subtract(1, 'day'), moment().add(21, 'day'));
+manager.addRegularHappening(publicMeeting, moment().subtract(1, 'day'), moment().add(21, 'day'));
+manager.addRegularHappening(wtStudy, moment().subtract(1, 'day'), moment().add(21, 'day'));
 
 // Taufansprache
 manager.addHappening(new Happening('Taufansprache', moment('2020-06-20 09:30'), moment('2020-06-20 10:15')));
