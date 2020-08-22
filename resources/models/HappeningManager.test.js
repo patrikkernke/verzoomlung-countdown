@@ -72,3 +72,13 @@ it('should get happenings for a single day', () => {
     expect(result).toContain(event2);
     expect(result).toContain(event4);
 });
+
+it('should remove regular meetings when the flag "withoutRegular" is enabled', () => {
+    const regularHappening = new RepeatingHappening('Öffentliche Zusammenkunft', 'Sonntag', '13:00', '14:45');
+
+    const manager = new HappeningManager();
+    manager.addRegularHappening(regularHappening, moment('2020-05-01'), moment('2020-05-31'));
+
+    const result = manager.getHappeningsForDay(moment('2020-05-03'), true);
+    expect(result.length === 0).toBeTruthy();
+});

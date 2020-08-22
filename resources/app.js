@@ -4,62 +4,58 @@ import HappeningManager from "./models/HappeningManager";
 import Happening from "./models/Happening";
 import Theme from "./models/Theme";
 
+// preparations
 moment.locale('de');
+const ludzMeeting = new RepeatingHappening('Leben- und Dienstzusammenkunft', 'Freitag', '19:00', '21:45');
+const publicMeeting = new RepeatingHappening('Öffentlicher Vortrag', 'Sonntag', '13:00', '13:35')
+const wtStudy = new RepeatingHappening('Wachtturmstudium', 'Sonntag', '13:35', '14:45')
 
-const ludzMeeting = new RepeatingHappening(
-    'Leben- und Dienstzusammenkunft', 'Freitag', '19:00', '21:45'
-);
 
-const publicMeeting = new RepeatingHappening(
-    'Öffentlicher Vortrag', 'Sonntag', '13:00', '13:35'
-)
-const wtStudy = new RepeatingHappening(
-    'Wachtturmstudium', 'Sonntag', '13:35', '14:45'
-)
-
+// -------------------
+//  EVENT MANAGER
+// -------------------
 const manager = new HappeningManager();
 manager.addRegularHappening(ludzMeeting, moment().subtract(1, 'day'), moment().add(21, 'day'));
 manager.addRegularHappening(publicMeeting, moment().subtract(1, 'day'), moment().add(21, 'day'));
 manager.addRegularHappening(wtStudy, moment().subtract(1, 'day'), moment().add(21, 'day'));
 
-// Taufansprache
-manager.addHappening(new Happening('Taufansprache', moment('2020-06-20 09:30'), moment('2020-06-20 10:15')));
-
-// Regionaler Kongress – Freut euch immer
-manager.addHappening(new Happening('Wachtturmstudium', moment('2020-07-12 10:00'), moment('2020-07-12 10:35')));
-manager.addHappening(new Happening('Regionaler Kongress (Freitag Vormittag)', moment('2020-07-12 10:40'), moment('2020-07-12 14:20')));
-
-manager.addHappening(new Happening('Wachtturmstudium', moment('2020-07-19 10:00'), moment('2020-07-19 10:35')));
-manager.addHappening(new Happening('Regionaler Kongress (Freitag Nachmittag)', moment('2020-07-19 10:40'), moment('2020-07-19 14:20')));
-
-manager.addHappening(new Happening('Wachtturmstudium', moment('2020-08-02 10:00'), moment('2020-08-02 10:30')));
-manager.addHappening(new Happening('Regionaler Kongress (Samstag Vormittag)', moment('2020-08-02 10:50'), moment('2020-08-02 15:00')));
-
-manager.addHappening(new Happening('Wachtturmstudium', moment('2020-08-09 10:00'), moment('2020-08-09 10:30')));
-manager.addHappening(new Happening('Regionaler Kongress (Samstag Nachmittag)', moment('2020-08-09 10:50'), moment('2020-08-09 15:00')));
-
+// Regionaler Kongress – Freut euch immer - Sonntag Vormittagsprogramm
 manager.addHappening(new Happening('Wachtturmstudium', moment('2020-08-23 10:00'), moment('2020-08-23 10:30')));
 manager.addHappening(new Happening('Regionaler Kongress (Sonntag Vormittag)', moment('2020-08-23 10:50'), moment('2020-08-23 15:00')));
-
+// Regionaler Kongress – Freut euch immer - Sonntag Nachmittagsprogramm
 manager.addHappening(new Happening('Wachtturmstudium', moment('2020-08-30 10:00'), moment('2020-08-30 10:30')));
 manager.addHappening(new Happening('Regionaler Kongress (Sonntag Nachmittag)', moment('2020-08-30 10:50'), moment('2020-08-30 15:00')));
 
+// -------------------
+//  THEMING
+// -------------------
 const RegionalCongressTheme = new Theme(
     'Regionaler Kongress',
     '„Freut euch immer“',
     'regional-congress',
     '/images/kongress_freut-euch-immer.jpg'
 );
-
 RegionalCongressTheme.addDate('2020-08-02');
 RegionalCongressTheme.addDate('2020-08-09');
 RegionalCongressTheme.addDate('2020-08-23');
 RegionalCongressTheme.addDate('2020-08-30');
 
+
+// -------------------
+//  Testevents
+// -------------------
+// const testMeeting = new RepeatingHappening('Test Reguläres Meeting', 'Samstag', '13:35', '14:45');
+// manager.addRegularHappening(testMeeting, moment().subtract(1, 'day'), moment().add(21, 'day'));
+// manager.addHappening(new Happening('TestKongress', moment().add(1, 'hour'), moment().add(2, 'hours')));
+// RegionalCongressTheme.addDate(moment());
+
+// -------------------
+//  APP LOGIK
+// -------------------
 document.addEventListener("DOMContentLoaded", () => {
     window.Verzoomlung = {};
     Verzoomlung.HappeningManager = manager;
-    Verzoomlung.TodayHappenings = manager.getHappeningsForDay(moment());
+    Verzoomlung.TodayHappenings = manager.getHappeningsForDay(moment(), RegionalCongressTheme.shouldActivate());
     Verzoomlung.Themes = [ RegionalCongressTheme ];
 
     const countdownElement = document.getElementById('countdown');

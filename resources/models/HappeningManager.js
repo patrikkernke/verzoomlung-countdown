@@ -28,6 +28,7 @@ class HappeningManager {
 
         while (regularHappening.basedate.isSameOrBefore(endingAt)) {
             let nextHappening = regularHappening.nextOccurence();
+            nextHappening._isRegular = true;
             this.addHappening(nextHappening);
 
             regularHappening.basedate = nextHappening.end.clone().add(1, 'second');
@@ -36,8 +37,12 @@ class HappeningManager {
         return this;
     }
 
-    getHappeningsForDay(day) {
+    getHappeningsForDay(day, withoutRegulars = false) {
         const result = this._happenings.filter((happening) => {
+            if (withoutRegulars && happening._isRegular) {
+                return false;
+            }
+
             return day.isSame(happening.start, 'day');
         });
 
