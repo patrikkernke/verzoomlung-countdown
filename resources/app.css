@@ -24,7 +24,7 @@ html, body {
 #date { @apply text-xl text-blueish-dark opacity-75 font-bold mt-2; }
 
 #program { @apply mt-12; @apply font-sans; }
-.program-entry { @apply flex items-center mb-4 text-2xl; }
+.program-entry { @apply flex items-center mb-4 text-xl; }
 .program-entry .start-time { @apply py-2 leading-none h-full font-bold text-lg rounded-lg mr-4 w-20 text-center; }
 .program-entry .description { @apply leading-tight; }
 /* current program entry style */
@@ -61,7 +61,7 @@ footer { @apply text-blueish-dark; }
 .regional-congress #background-image img { @apply object-cover object-left w-auto; }
 .regional-congress footer header {
     @apply block;
-    @apply text-6xl -ml-8 mb-16 tracking-wide leading-tight;
+    @apply text-5xl -ml-8 mb-16 tracking-wide leading-tight;
     color: #4ab2cd
 }
 
