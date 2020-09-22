@@ -26,6 +26,9 @@ manager.addHappening(new Happening('Regionaler Kongress (Sonntag Vormittag)', mo
 manager.addHappening(new Happening('Wachtturmstudium', moment('2020-08-30 10:00'), moment('2020-08-30 10:30')));
 manager.addHappening(new Happening('Regionaler Kongress (Sonntag Nachmittag)', moment('2020-08-30 10:50'), moment('2020-08-30 15:00')));
 
+// Diestwoche
+manager.addHappening(new Happening('Leben- und Dienstzusammenkunft', moment('2020-09-22 19:00'), moment('2020-09-22 21:45')));
+
 // -------------------
 //  THEMING
 // -------------------
