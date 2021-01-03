@@ -7,8 +7,8 @@ import Theme from "./models/Theme";
 // preparations
 moment.locale('de');
 const ludzMeeting = new RepeatingHappening('Leben- und Dienstzusammenkunft', 'Freitag', '19:00', '21:45');
-const publicMeeting = new RepeatingHappening('Öffentlicher Vortrag', 'Sonntag', '13:00', '13:35')
-const wtStudy = new RepeatingHappening('Wachtturmstudium', 'Sonntag', '13:35', '14:45')
+const publicMeeting = new RepeatingHappening('Öffentlicher Vortrag', 'Sonntag', '10:00', '10:35')
+const wtStudy = new RepeatingHappening('Wachtturmstudium', 'Sonntag', '10:35', '11:45')
 
 
 // -------------------
